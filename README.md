@@ -1,3 +1,4 @@
+
 # Yojana Sahayak Centre Locator
 
 A responsive locator for nearby assistance-related places. The active application geocodes a place, searches OpenStreetMap data within the selected radius, and displays returned records in a list and on a Leaflet map. It does not create fallback centre records.
@@ -77,3 +78,4 @@ Place records and map tiles are from OpenStreetMap contributors; geocoding is by
 ## Sharing safely
 
 The source scan found no apparent hardcoded API keys, passwords, tokens, or private-key material in the current project files. This is a source review, not a guarantee about future edits. Do not add credentials to source control; keep local environment files and credentials out of commits using `.gitignore`.
+
