@@ -1,0 +1,33 @@
+# Dependencies and generated output
+node_modules/
+coverage/
+dist/
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+.npmrc
+credentials.*
+secrets.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local logs
+*.log
+npm-debug.log*
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centre Locator · Yojana Sahayak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- External dependency: Leaflet (map). If it fails to load, the page shows a message. -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#" aria-label="Yojana Sahayak home">
+    <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="9" fill="#0d4a34"/><path d="M18 8c-5 3-7 8-5 13 3 1 5 0 5-3 0 3 2 4 5 3 2-5 0-10-5-13z" fill="#f2c94c"/><path d="M10 25c4 3 12 3 16 0" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+    <span><strong>Yojana Sahayak</strong><small>Smart Scheme Discovery &amp; Assistance</small></span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="#">Home</a><a href="#">Find Schemes</a><a href="#">Check Eligibility</a><a href="#">Compare Schemes</a>
+    <a href="#" class="active" aria-current="page">Centre Locator</a><a href="#">My Applications</a>
+  </nav>
+  <label class="lang"><span class="sr">Language</span>
+    <select id="lang"><option>English</option><option>हिन्दी</option><option>தமிழ்</option><option>తెలుగు</option></select>
+  </label>
+</header>
+
+<main class="page">
+  <section class="intro">
+    <div>
+      <h1>Find Nearby Assistance Centres</h1>
+      <p>Get help with registration, verification, documents and scheme applications.</p>
+    </div>
+    <div class="scheme-box">
+      <label for="scheme">Select scheme</label>
+      <select id="scheme"></select>
+      <p id="schemeHelp"></p>
+    </div>
+  </section>
+
+  <section class="toolbar" aria-label="Location search">
+    <div class="field">
+      <label class="sr" for="place">Locality, city or PIN code</label>
+      <input id="place" type="search" placeholder="Locality, city or PIN code" autocomplete="off">
+    </div>
+    <button class="btn ghost" id="useLoc" type="button">Use My Location</button>
+    <button class="btn link" id="useDemo" type="button">Use demo location</button>
+    <p class="loc-status" id="locStatus" role="status"><span class="dot"></span><span id="locText">No location set. Search, use your location, or try the demo location.</span></p>
+    <label class="radius"><span class="sr">Distance radius</span>
+      <select id="radius"><option value="2">Within 2 km</option><option value="5" selected>Within 5 km</option><option value="10">Within 10 km</option><option value="25">Within 25 km</option></select>
+    </label>
+    <button class="btn primary" id="searchBtn" type="button">Search Centres</button>
+  </section>
+
+  <div class="demo-note" id="modeNote"><b>Demo Mode</b> — centre locations and service information have not been verified.</div>
+
+  <div class="view-toggle" role="group" aria-label="Switch view">
+    <button type="button" data-view="list" class="on">List</button>
+    <button type="button" data-view="map">Map</button>
+  </div>
+
+  <div class="layout" data-view="list">
+    <aside class="panel list-panel" aria-label="Nearby centres">
+      <div class="panel-head">
+        <h2>Nearby Centres</h2><p id="count">0 centres found</p>
+        <input id="centreSearch" type="search" placeholder="Search by name or address" aria-label="Search centres">
+        <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+        <div class="sort-row">
+          <label class="chk"><input type="checkbox" id="openNow"> Open now</label>
+          <select id="sort" aria-label="Sort centres"><option value="near">Nearest First</option><option value="name">Name A–Z</option></select>
+        </div>
+      </div>
+      <ul class="cards" id="cards"></ul>
+    </aside>
+
+    <section class="map-wrap" aria-label="Map">
+      <div id="map"></div>
+      <div class="map-msg" id="mapMsg" hidden></div>
+      <div class="legend" id="legend"></div>
+      <button class="fit" id="fitBtn" type="button" title="Fit all results">Fit results</button>
+    </section>
+
+    <aside class="panel details" id="details" aria-live="polite"></aside>
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="style.js"></script>
+</body>
+</html>
